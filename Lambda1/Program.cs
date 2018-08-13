@@ -1,14 +1,11 @@
-﻿// This works.  But I know it is WAYYYYYY too obfuscated.  I spent hours and hours trying to populate a simple list with all the required values.  To no avail.
-// I'm guessing there's a much easier way to do this.  Eliminating about 100 lines of code or so......
-
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 //------------1. In the Main() method, create a list of at least 10 employees.Each employee should have a first and last name---------
-//------------   as well as an Id.At least two employees should have the first name "Joe".--------------------------------------------
+//------------   as well as an Id. At least two employees should have the first name "Joe".--------------------------------------------
 
 namespace Lambda1
 {
@@ -17,131 +14,76 @@ namespace Lambda1
         static void Main(string[] args)
         {
 
-        Employee employee1 = new Employee();
-        employee1.fname = "Jim";
-        employee1.lname = "Jones";
-        employee1.ID = 1;
-        Employee employee2 = new Employee();
-        employee2.fname = "John";
-        employee2.lname = "Smith";
-        employee2.ID = 2;
-        Employee employee3 = new Employee();
-        employee3.fname = "Joe";
-        employee3.lname = "Jones";
-        employee3.ID = 3;
-        Employee employee4 = new Employee();
-        employee4.fname = "Sammy";
-        employee4.lname = "Smith";
-        employee4.ID = 4;
-        Employee employee5 = new Employee();
-        employee5.fname = "Joe";
-        employee5.lname = "Dickson";
-        employee5.ID = 5;
-        Employee employee6 = new Employee();
-        employee6.fname = "Jerry";
-        employee6.lname = "Jones";
-        employee6.ID = 6;
-        Employee employee7 = new Employee();
-        employee7.fname = "Jimbo";
-        employee7.lname = "Jenkins";
-        employee7.ID = 7;
-        Employee employee8 = new Employee();
-        employee8.fname = "Tony";
-        employee8.lname = "Gunk";
-        employee8.ID = 8;
-        Employee employee9 = new Employee();
-        employee9.fname = "Captain";
-        employee9.lname = "Fatbelly";
-        employee9.ID = 9;
-        Employee employee10 = new Employee();
-        employee10.fname = "Jesus";
-        employee10.lname = "Jones";
-        employee10.ID = 10;
+            List<Employee> employees = new List<Employee>();
 
-        List<string> firstnamesList = new List<string>();
-        List<string> lastnamesList = new List<string>();
-        List<int> IDList = new List<int>();
+            Employee employee1 = new Employee() { fname = "Jim", lname = "Jones", ID = 1 };
+            Employee employee2 = new Employee() { fname = "John", lname = "Smith", ID = 2 };
+            Employee employee3 = new Employee() { fname = "Jerry", lname = "Jones", ID = 3 };
+            Employee employee4 = new Employee() { fname = "Sammy", lname = "Smith", ID = 4 };
+            Employee employee5 = new Employee() { fname = "Joe", lname = "Dickson", ID = 5 };
+            Employee employee6 = new Employee() { fname = "Jim", lname = "Jones", ID = 6 };
+            Employee employee7 = new Employee() { fname = "Joe", lname = "Smith", ID = 7 };
+            Employee employee8 = new Employee() { fname = "Jerry", lname = "Jones", ID = 8 };
+            Employee employee9 = new Employee() { fname = "Sammy", lname = "Smith", ID = 9 };
+            Employee employee10 = new Employee() { fname = "Joe", lname = "Dickson", ID = 10 };
 
-        firstnamesList.Add(employee1.fname);
-        firstnamesList.Add(employee2.fname);
-        firstnamesList.Add(employee3.fname);
-        firstnamesList.Add(employee4.fname);
-        firstnamesList.Add(employee5.fname);
-        firstnamesList.Add(employee6.fname);
-        firstnamesList.Add(employee7.fname);
-        firstnamesList.Add(employee8.fname);
-        firstnamesList.Add(employee9.fname);
-        firstnamesList.Add(employee10.fname);
+            employees.Add(employee1);
+            employees.Add(employee2);
+            employees.Add(employee3);
+            employees.Add(employee4);
+            employees.Add(employee5);
+            employees.Add(employee6);
+            employees.Add(employee7);
+            employees.Add(employee8);
+            employees.Add(employee9);
+            employees.Add(employee10);
 
-        lastnamesList.Add(employee1.lname);
-        lastnamesList.Add(employee2.lname);
-        lastnamesList.Add(employee3.lname);
-        lastnamesList.Add(employee4.lname);
-        lastnamesList.Add(employee5.lname);
-        lastnamesList.Add(employee6.lname);
-        lastnamesList.Add(employee7.lname);
-        lastnamesList.Add(employee8.lname);
-        lastnamesList.Add(employee9.lname);
-        lastnamesList.Add(employee10.lname);
+            int count = (employees.Count());
 
-        IDList.Add(employee1.ID);
-        IDList.Add(employee2.ID);
-        IDList.Add(employee3.ID);
-        IDList.Add(employee4.ID);
-        IDList.Add(employee5.ID);
-        IDList.Add(employee6.ID);
-        IDList.Add(employee7.ID);
-        IDList.Add(employee8.ID);
-        IDList.Add(employee9.ID);
-        IDList.Add(employee10.ID);
+            Console.WriteLine("Employee List");
+            Console.WriteLine("-------------");
+            Console.WriteLine("");
 
-        int count = (IDList.Count());
-    
-        for (int x = 0; x < count; x++)
-        {
-            Console.WriteLine(firstnamesList[x]);
-            Console.WriteLine(lastnamesList[x]);
-            Console.WriteLine(IDList[x]);
-        }
+            for (int x = 0; x < count; x++)  Console.WriteLine("Employee " + x + ": {0} {1} {2}", employees[x].fname, employees[x].lname, employees[x].ID);
 
-        List<string> JoeList = new List<string>();
+            Console.ReadLine();
 
-        //------------------2. Using a foreach loop, create a new list of all employees with the first name "Joe".------------
+            //------------------2. Using a foreach loop, create a new list of all employees with the first name "Joe".------------
 
-        foreach (string value in firstnamesList)
-        {
-            Console.WriteLine(value);
-            if (value == "Joe")
-            {
-                JoeList.Add(value);
-            }
-        }
+            List<string> JoeList = new List<string>();
 
-        Console.WriteLine("");
-        Console.WriteLine("JoeList List after adding entries to the new list: ");
-        JoeList.ForEach(Console.WriteLine);
-        Console.WriteLine("");
+            foreach (Employee value in employees)  if (value.fname == "Joe") JoeList.Add(value.fname);
 
-        //-------------------3. Do the same thing again, but this time with a lambda expression.--------------------------------
+            Console.WriteLine("");
+            Console.WriteLine("JoeList List after adding entries to the new list with a for/each loop: ");
+            JoeList.ForEach(Console.WriteLine);
+            Console.WriteLine("");
+            Console.ReadLine();
 
-        List<string> JoeList2 = firstnamesList.Where(x => x == "Joe").ToList();
+            //-------------------3. Do the same thing again, but this time with a lambda expression.--------------------------------
 
-        Console.WriteLine("");
-        Console.WriteLine("JoeList2 List after adding entries to the new list: ");
-        JoeList2.ForEach(Console.WriteLine);
-        Console.WriteLine("");
+            List<Employee> JoeList2 = employees.Where(x => x.fname == "Joe").ToList(); ;
 
-        //------------------4. Using a lambda expression, make a list of all employees with an Id number greater than 5.-------
+            Console.WriteLine("");
+            Console.WriteLine("JoeList2 after adding entries to the new list for first name Joe using a Lambda: ");
 
-        List<int> EmpList = IDList.Where(x=> x > 5).ToList();
+            count = (JoeList2.Count());
+            for (int x = 0; x < count; x++)  Console.WriteLine("Employees named Joe:  {0} {1} {2}", JoeList2[x].fname, JoeList2[x].lname, JoeList2[x].ID);
 
-        Console.WriteLine("");
-        Console.WriteLine("EmpList List after adding entries to the new list: ");
-        EmpList.ForEach(Console.WriteLine);
-        Console.WriteLine("");
+            Console.ReadLine();
 
+            //------------------4. Using a lambda expression, make a list of all employees with an Id number greater than 5.-------
 
-        Console.ReadLine();
+            List<Employee> EmpList = employees.Where(x => x.ID > 5).ToList();
+
+            Console.WriteLine("");
+            Console.WriteLine("EmpList List after adding entries to the new list for ID > 5 using a Lambda: ");
+            Console.WriteLine("");
+
+            count = (EmpList.Count());
+            for (int x = 0; x < count; x++)  Console.WriteLine("Employees with ID's > 5:  {0} {1} {2}", EmpList[x].fname, EmpList[x].lname, EmpList[x].ID);
+
+            Console.ReadLine();
 
         }
     }
